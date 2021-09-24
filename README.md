@@ -6,7 +6,7 @@ Think you're a **cool cat**? Prove it by taking this **Garfield** knowledge quiz
 
 **Demo of the quiz in action! (pretend you didn't see the answers)**
 
-![Demo of the quiz in action](https://github.com/argibson02/Password-Generator/blob/main/images/demo-password-generator.gif?raw=true)
+![Demo of the quiz in action](https://github.com/argibson02/Quiz-App/blob/main/images/demo-garfield-quiz.gif?raw=true)
 
 
 *(Homework project #4 for the UC Berkeley Full-Stack Developer Bootcamp)*
@@ -51,3 +51,6 @@ Any modern internet browser will do!
 
 - Thanks to Jerome, Manuel, Cheng, and Daniel for instructing the UCB Coding Bootcamp.
 - Thanks to Eric Meyer for the [CSS reset file](https://meyerweb.com/eric/tools/css/reset/).
+- Thanks to Jim Davis for creating Garfield.
+
+
