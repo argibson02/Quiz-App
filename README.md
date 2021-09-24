@@ -4,6 +4,8 @@
 
 Think you're a **cool cat**? Prove it by taking this **Garfield** knowledge quiz! But be carful, this test is **timed**! Use the **scoreboard** to share and compete against your friends!
 
+[CLICK THIS LINK TO TEST YOUR WIT IN GARFIELD'S PUZZLE CASTLE!](https://argibson02.github.io/Quiz-App/)
+
 **Demo of the quiz in action! (pretend you didn't see the answers)**
 
 ![Demo of the quiz in action](https://github.com/argibson02/Quiz-App/blob/main/images/demo-garfield-quiz.gif?raw=true)

@@ -1,30 +1,136 @@
+/*----------GENERAL DECLARATIONS--------------*/
+:root {
+    --garfieldOrange: #FF9C31;
+    --garfieldBlack: black;
+    --garfieldWhite: white;
+    --nermalGrey: #D6C6B5;
+    --arlenePink: #FFD6D6;
+    --arleneRed: #CE0000;
+    --odieBeige: #FFFFA5;
+    --pookyBrown: #B55A00;
+    --jonBlue: #65CDF4;
+    --jonDarkBlue: #4078BD;
+}
+
 * {
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     font-size: 16px;
     margin: 0px;
     padding: 0px;
 }
 
+/*---------HEADER---------*/
+
 header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+    border: 3px solid magenta;
 
 }
 
-nav {
-    text-decoration: none;
+header h1 {
+    font-size: 46px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 6px dashed black;
+    text-align: center;
+    margin: 10px;
+    background: chocolate;
+    padding: 5px;
+    animation: spin 10s linear infinite;
+    width: 300px;
+}
+/*
+header h1:active {
+    animation: spin 15s linear infinite;
+  }
+*/
+
+@keyframes spin { 
+  100% { 
+    transform: rotateZ(360deg);
+  }
 }
 
-ul {
-    list-style-type: none;
+
+#headertitle {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid cyan;
+}
+
+header article {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+}
+
+header article p {
+    max-width: 1200px;
+    font-size: 30px;
+    background: chocolate;
+    color: var(--garfieldBlack);
+    display: flex;
+    flex-wrap: wrap;
+    border: 3px solid blue;
+    padding: 10px;
 }
 
 
-li {
-
-}
-
+/*--------BODY-----------*/
 body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 24px;
+    background-image: url(./images/1200px-Garfield_the_Cat.svg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    border: 3px dotted red;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    height: 300px;
+    border: 3px dotted black;
 
 }
 
-footer {
+.button {
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
 
+}
+
+#startButton {
+    background-color: var(--garfieldOrange);
+    color: var(--garfieldWhite);
+}
+
+/*-----------------FOOTER-----------------------------*/
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 3px dotted goldenrod;
 }
