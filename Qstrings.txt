@@ -20,3 +20,27 @@ v
 19. Why does Garfield hate Mondays???? Garfield is a cat. Every day is the same for him. “I know, right?”
 20. What has Garfield given up on? Mousing, Mondays, Diets, All of the above.
 21. Can Jon understand what Garfield says? No, 
+
+
+var questionArray01 = ["", "", "", ""];
+var questionArray02 = ["", "", "", ""];
+var questionArray03 = ["", "", "", ""];
+var questionArray04 = ["", "", "", ""];
+var questionArray05 = ["", "", "", ""];
+var questionArray06 = ["", "", "", ""];
+var questionArray07 = ["", "", "", ""];
+var questionArray08 = ["", "", "", ""];
+var questionArray09 = ["", "", "", ""];
+var questionArray10 = ["", "", "", ""];
+var questionArray11 = ["", "", "", ""];
+var questionArray12 = ["", "", "", ""];
+var questionArray13 = ["", "", "", ""];
+var questionArray14 = ["", "", "", ""];
+var questionArray15 = ["", "", "", ""];
+var questionArray16 = ["", "", "", ""];
+var questionArray17 = ["", "", "", ""];
+var questionArray18 = ["", "", "", ""];
+var questionArray19 = ["", "", "", ""];
+var questionArray20 = ["", "", "", ""];
+var questionArray21 = ["", "", "", ""];
+				
