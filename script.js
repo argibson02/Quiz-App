@@ -1,4 +1,4 @@
-// QUESTION AND ANSWER ARRAYS
+//QUESTION AND ANSWER ARRAYS
 
 var questionObject01 = [
     {

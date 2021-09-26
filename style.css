@@ -21,7 +21,6 @@
 /*--------BODY-----------*/
 body {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -29,7 +28,7 @@ body {
     background-image: url(./images/1200px-Garfield_the_Cat.svg.png);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 99.5%;
+    width: 99%;
     height: 80%;
     border: 3px dotted red;
 }
@@ -43,9 +42,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
-    border: 3px solid cyan;
-    
+    margin-top: 50px;    
 }
 
 #spinnyh1 {
@@ -76,7 +73,7 @@ body {
     width: 60%;
     height: 100%;
     border: 3px dotted black;
-
+    margin: 100px;
 }
 
 .startSection article {
@@ -104,40 +101,103 @@ body {
     border-radius: 10px;
     font-size: 24px;
     margin: 30px;
+    background-color: rgb(160, 33, 160);
+    color: var(--garfieldWhite);
+    border: 10px solid var(--garfieldWhite);
+    box-shadow: 3px 3px 2px 2px var(--garfieldBlack);
 }
 
 .startButton:hover {
-    scale: 1.1;
-}
-
-#startButton {
-    background-color: var(--garfieldOrange);
-    color: var(--garfieldWhite);
-    border: 10px solid var(--garfieldWhite);
-    box-shadow: 3px 3px 3px var(--garfieldBlack);
+    transform: scale(1.05);
+    transition: ease-in-out .05s;
+    cursor: pointer;
 }
 
 
 /*------------QUESTION SECTION-----------------*/
 
+.choiceSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    border: 3px dotted black;
+    margin: 100px;
+    padding: 10px 50px 50px 50px;
+    background: cornsilk;
+}
 
+.timerContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--nermalGrey);
+    padding: 5px;
+    width: 60%;
+    max-width: 175px;
+    border: 1px solid black;
+    font-size: 18px;
+    margin: 30px;
+}
 
+#timerNumber {
+    font-weight: bolder;
+    font-size: 18px;
+}
 
+.choiceButton {
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    margin: 15px;
+    width: 60%;
+    background-color: rgb(160, 33, 160);
+    color: var(--garfieldWhite);
+    border: 10px solid var(--garfieldWhite);
+    box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
+}
 
+.choiceButton:hover {
+    transform: scale(1.05);
+    transition: ease-in-out .05s;
+    cursor: pointer;
+}
 
+h2 {/* Question text */
+    color: var(--garfieldBlack);
+    font-size: 34px;
+    margin-bottom: 20px;
+}
 
 
 /*---------------SCOREBOARD SECTION--------------------*/
 
-
-
-
+.scoreboardSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    border: 3px dotted black;
+    margin: 100px;
+    padding: 10px 50px 50px 50px;
+    background: cornsilk;
+}
 
 
 
 /*----------------RESPONSIVE BREAKPOINT SECTION-------------------*/
-/*Start section*/
-@media screen and (max-width: 530px) {
+/*Start section-------------*/
+@media screen and (max-width: 1800px) {
+    .startSection {
+        margin: 30px;
+    }
+}
+
+@media screen and (max-width: 750px) {
     #spinnyh1 {
         font-size: 36px;
         font-weight: bold;
@@ -156,7 +216,76 @@ body {
     .startSection article p {
         font-size: 22px;
     }
+}
 
+/*Choice section-------------*/
+@media screen and (max-width: 1800px) {
+    .choiceSection {
+        margin: 10px;
+    }
+
+    h2 {/* Question text */
+        color: var(--garfieldBlack);
+        font-size: 28px;
+        margin-bottom: 20px;
+    }    
+
+    .choiceButton {
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 24px;
+        margin: 15px;
+        width: 60%;
+        background-color: rgb(160, 33, 160);
+        color: var(--garfieldWhite);
+        border: 7px solid var(--garfieldWhite);
+        box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
+    }
+}
+
+@media screen and (max-width: 769px) {
+    h2 {/* Question text */
+        color: var(--garfieldBlack);
+        font-size: 28px;
+        margin-bottom: 20px;
+    }    
+
+    .choiceButton {
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 22px;
+        margin: 13px;
+        width: 80%;
+        background-color: rgb(160, 33, 160);
+        color: var(--garfieldWhite);
+        border: 6px solid var(--garfieldWhite);
+        box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .choiceSection {
+        padding: 0px 40px 40px 40px;
+    }
+
+    h2 {/* Question text */
+        color: var(--garfieldBlack);
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }    
+
+    .choiceButton {
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 22px;
+        margin: 8px;
+        width: 90%;
+        background-color: rgb(160, 33, 160);
+        color: var(--garfieldWhite);
+        border: 6px solid var(--garfieldWhite);
+        box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
+    }
 }
 
 
