@@ -3,6 +3,7 @@
     --garfieldOrange: #FF9C31;
     --garfieldBlack: black;
     --garfieldWhite: white;
+    --garfieldPurple: rgb(160, 33, 160);
     --nermalGrey: #D6C6B5;
     --arlenePink: #FFD6D6;
     --arleneRed: #CE0000;
@@ -18,6 +19,7 @@
     margin: 0px;
     padding: 0px;
 }
+
 /*--------BODY-----------*/
 body {
     display: flex;
@@ -101,10 +103,11 @@ body {
     border-radius: 10px;
     font-size: 24px;
     margin: 30px;
-    background-color: rgb(160, 33, 160);
+    background-color: var(--garfieldPurple);
     color: var(--garfieldWhite);
     border: 10px solid var(--garfieldWhite);
     box-shadow: 3px 3px 2px 2px var(--garfieldBlack);
+    max-width: 500px;
 }
 
 .startButton:hover {
@@ -153,7 +156,7 @@ body {
     font-size: 24px;
     margin: 15px;
     width: 60%;
-    background-color: rgb(160, 33, 160);
+    background-color: var(--garfieldPurple);
     color: var(--garfieldWhite);
     border: 10px solid var(--garfieldWhite);
     box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
@@ -165,7 +168,7 @@ body {
     cursor: pointer;
 }
 
-h2 {/* Question text */
+.choiceSection h2 {/* Question text */
     color: var(--garfieldBlack);
     font-size: 34px;
     margin-bottom: 20px;
@@ -179,7 +182,7 @@ h2 {/* Question text */
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 60%;
+    width: 45%;
     height: 100%;
     border: 3px dotted black;
     margin: 100px;
@@ -187,6 +190,37 @@ h2 {/* Question text */
     background: cornsilk;
 }
 
+.scoreboardSection h2 {
+    text-align: center;
+    width: 80%;
+    border: 3px dotted black;
+    font-size: 28px;
+}
+
+.scoreboardSection h3 {
+    width: 80%;
+    border: 3px dotted black;
+    font-size: 18px;
+}
+
+#playAgainButton {
+    padding: 15px;
+}
+
+.scoreboardUl {
+    list-style-type: none;
+    border: 3px solid black;
+    width: 300px;
+    text-align: center;
+    background-color: var(--garfieldOrange);
+}
+
+.scoreboardLi {
+    margin: 3px;
+    padding: 3px;
+    background-color: var(--nermalGrey);
+    border: 3px solid black;
+}
 
 
 /*----------------RESPONSIVE BREAKPOINT SECTION-------------------*/
@@ -224,7 +258,7 @@ h2 {/* Question text */
         margin: 10px;
     }
 
-    h2 {/* Question text */
+    .choiceSection h2 {/* Question text */
         color: var(--garfieldBlack);
         font-size: 28px;
         margin-bottom: 20px;
@@ -236,7 +270,7 @@ h2 {/* Question text */
         font-size: 24px;
         margin: 15px;
         width: 60%;
-        background-color: rgb(160, 33, 160);
+        background-color: var(--garfieldPurple);
         color: var(--garfieldWhite);
         border: 7px solid var(--garfieldWhite);
         box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
@@ -256,7 +290,7 @@ h2 {/* Question text */
         font-size: 22px;
         margin: 13px;
         width: 80%;
-        background-color: rgb(160, 33, 160);
+        background-color: var(--garfieldPurple);
         color: var(--garfieldWhite);
         border: 6px solid var(--garfieldWhite);
         box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
@@ -281,14 +315,63 @@ h2 {/* Question text */
         font-size: 22px;
         margin: 8px;
         width: 90%;
-        background-color: rgb(160, 33, 160);
+        background-color: var(--garfieldPurple);
         color: var(--garfieldWhite);
         border: 6px solid var(--garfieldWhite);
         box-shadow: 3px 3px 3px 3px var(--garfieldBlack);
     }
 }
 
+/*Scoreboard Section------------------------*/
+@media screen and (max-width: 1800px) {
+    .scoreboardSection {
+        margin: 30px;
+    }
 
+    .scoreboardSection h2 {/* Play it again text */
+        color: var(--garfieldBlack);
+        font-size: 28px;
+    }    
+}
+
+@media screen and (max-width: 769px) {
+    .scoreboardSection h2 {/* Play it again text */
+        color: var(--garfieldBlack);
+        font-size: 18px;
+        width: 100%;
+    }   
+
+    #playAgainButton {
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+        margin: 8px;
+        width: 90%;
+        background-color: var(--garfieldPurple);
+        color: var(--garfieldWhite);
+        border: 5px solid var(--garfieldWhite);
+        box-shadow: 2px 2px 2px 2px var(--garfieldBlack);
+}
+
+@media screen and (max-width: 535px) {
+    h2 {/* Play it again text */
+        color: var(--garfieldBlack);
+        font-size: 20px;
+        margin-bottom: 0px;
+    }   
+
+    .scoreboardUl {
+        list-style-type: none;
+        border: 3px dotted black;
+        width: 200px;
+        text-align: center;
+    }
+
+    #playAgainButton {
+        margin: 15px;
+        width: 100%;
+    }
+}
 
 /*
 .startSection
@@ -298,7 +381,6 @@ h2 {/* Question text */
 .startButton
 .choiceButton
 .scoreboard
-
 #startSection
 #choiceSection
 #scoreboardSection
