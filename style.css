@@ -37,7 +37,6 @@ body {
 
 
 /*---------START SECTION---------*/
-
 #headertitle {
     display: flex;
     flex-wrap: wrap;
@@ -65,7 +64,6 @@ body {
     transform: rotateZ(360deg);
   }
 }
-
 
 .startSection {
     display: flex;
@@ -98,6 +96,10 @@ body {
     padding: 10px;
 }
 
+.initialForm{
+    width: 200px;
+} 
+
 .startButton {
     padding: 20px;
     border-radius: 10px;
@@ -105,7 +107,7 @@ body {
     margin: 30px;
     background-color: var(--garfieldPurple);
     color: var(--garfieldWhite);
-    border: 10px solid var(--garfieldWhite);
+    border: 9px solid var(--garfieldWhite);
     box-shadow: 3px 3px 2px 2px var(--garfieldBlack);
     max-width: 500px;
 }
@@ -118,7 +120,6 @@ body {
 
 
 /*------------QUESTION SECTION-----------------*/
-
 .choiceSection {
     display: flex;
     justify-content: center;
@@ -176,7 +177,6 @@ body {
 
 
 /*---------------SCOREBOARD SECTION--------------------*/
-
 .scoreboardSection {
     display: flex;
     justify-content: center;
@@ -227,7 +227,7 @@ body {
 /*Start section-------------*/
 @media screen and (max-width: 1800px) {
     .startSection {
-        margin: 30px;
+        margin: 1px;
     }
 }
 
