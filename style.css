@@ -278,7 +278,7 @@ body {
 }
 
 @media screen and (max-width: 769px) {
-    h2 {/* Question text */
+    .choiceSection h2 {/* Question text */
         color: var(--garfieldBlack);
         font-size: 28px;
         margin-bottom: 20px;
@@ -302,7 +302,7 @@ body {
         padding: 0px 40px 40px 40px;
     }
 
-    h2 {/* Question text */
+    .choiceSection h2 {/* Question text */
         color: var(--garfieldBlack);
         font-size: 24px;
         margin-bottom: 20px;
@@ -351,10 +351,11 @@ body {
         color: var(--garfieldWhite);
         border: 5px solid var(--garfieldWhite);
         box-shadow: 2px 2px 2px 2px var(--garfieldBlack);
+    }
 }
 
 @media screen and (max-width: 535px) {
-    h2 {/* Play it again text */
+    .scoreboardSection h2 {/* Play it again text */
         color: var(--garfieldBlack);
         font-size: 20px;
         margin-bottom: 0px;
