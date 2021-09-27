@@ -43,4 +43,29 @@ var questionArray18 = ["", "", "", ""];
 var questionArray19 = ["", "", "", ""];
 var questionArray20 = ["", "", "", ""];
 var questionArray21 = ["", "", "", ""];
+
+
+
+//var questionArray01 = ["1.  What color is Garfield?", ["Orange", "White", "Grey", "Blue"]]; //  1
+//var questionArray02 = ["2.  What is Garfield’s favorite food?", ["Tuna", "Purina", "Lasagna", "Pizza"]]; //  3
+//var questionArray03 = ["3.  What day does Garfield hate?", ["Wednesdays", "Mondays", "Fridays", "Sundays"]]; //  2
+//var questionArray04 = ["4.  Who is Garfield’s dog friend?", ["Clive", "Frank", "Odie", "Hale"]]; //  1
+//var questionArray05 = ["5.  What kind of dog is Odie?", ["Chihuahua", "German Shepherd", "Labrador", "Beagle"]]; //  4
+//var questionArray06 = ["6.  Who is Garfield’s owner?", ["Jon Arbuckle", "Lyman Turner", "Jack Sandman", "Al Murray"]]; //  1
+//var questionArray08 = ["8.  What is the name of Garfield’s teddy bear?", ["Teddy", "Billy", "Pooky", "Harry"]]; //  3
+//var questionArray09 = ["9.  Which number is Garfield thinking of right now?", ["3", "63", "92", "Lasagna"]]; //   4
+//var questionArray10 = ["10. Who is Garfield’s vet?", ["Dr. Julie Payne", "Dr. Liz Wilson", "Dr. Joanna Cauldron", "Dr. Vanessa Marshall"]]; //  2
+//var questionArray11 = ["11. Who is Garfield’s nemesis?", ["Nermal", "Arlene", "Odie", "Dr. Liz Wilson"]]; //  1
+//var questionArray12 = ["12. What color is Nermal?", ["Pink", "Grey", "White", "Calico"]]; //  2
+//var questionArray13 = ["13. How many live-action Garfield movies are there?", ["1", "2", "3", "4"]]; //  2
+//var questionArray14 = ["14. How many panels are in a normal Garfield strip?", ["3", "4", "5", "6"]]; //  1
+//var questionArray15 = ["15. How many panels are in a Sunday Garfield strip? (Not including the header panel)", ["6", "7", "8", "9"]]; //  2
+//var questionArray16 = ["16. How old is Garfield in real-world years?", ["24", "36", "43", "48"]]; //  3
+//var questionArray17 = ["17. Which cat has a crush on Garfield?", ["Arlene", "Fluffy", "Ivy", "Abigail"]]; //  1
+//var questionArray18 = ["18. What color is Arlene?", ["Grey", "White", "Calico", "Pink"]]; //  4
+//var questionArray19 = ["19.  Can Jon understand what Garfield says?", ["Yes", "No", "Sometimes", "It's not canonically defined"]]; //  2
+//var questionArray20 = ["20. What has Garfield given up on?", ["Mousing", "Mondays", "Diets", "All of the above"]]; //  4
+//var questionArray21 = ["21. Why does Garfield hate Mondays???? Garfield is a cat. Every day is the same for him.", ["I know, right?", "I know, right?", "I know, right?", "I know, right?"]];  // 5
+
+
 				
