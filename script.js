@@ -133,6 +133,9 @@ var choiceButton0 = document.getElementById("#choiceButton0");
 var choiceButton1 = document.getElementById("#choiceButton1");
 var choiceButton2 = document.getElementById("#choiceButton2");
 var choiceButton3 = document.getElementById("#choiceButton3");
+var qIndex = 0;
+var currentQuestion;
+
 ///var scoreTime = 
 
 
@@ -154,19 +157,32 @@ function runGame() {
 
 /*------MULTIPLE CHOICE BUTTONS, CYCLING, SCORING--------------------------------------------------------------------------------------------------------------------------------*/
 
-function multipleChoice() {
+function multipleChoice(direction) {
+    qIndex = qIndex + direction
+    if (qIndex > questionsObject.length) {
+        localStorage.setItem("timeScore", timeLeft.value) // logging time score
+        choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+        scoreboardSection.setAttribute("style", "display:inherit");
+    }
+    currentQuestion = 
 
-    
-    document.getElementById("questionText").innerHTML = questionsObject[0].question;
-    document.getElementById("choiceButton0").innerHTML = questionsObject[0].choices[0];
-    document.getElementById("choiceButton1").innerHTML = questionsObject[0].choices[1];
-    document.getElementById("choiceButton2").innerHTML = questionsObject[0].choices[2];
-    document.getElementById("choiceButton3").innerHTML = questionsObject[0].choices[3];
+    document.getElementById("questionText").innerHTML = questionsObject[qIndex].question;
+    document.getElementById("choiceButton0").innerHTML = questionsObject[qIndex].choices[0];
+    document.getElementById("choiceButton1").innerHTML = questionsObject[qIndex].choices[1];
+    document.getElementById("choiceButton2").innerHTML = questionsObject[qIndex].choices[2];
+    document.getElementById("choiceButton3").innerHTML = questionsObject[qIndex].choices[3];
+
+
+
 
 
 }
-
 multipleChoice()
+
+
+qIndex
+
+
 
 function choiceButtonClick(event) {
     event.stopPropagation();
