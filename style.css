@@ -32,7 +32,6 @@ body {
     background-size: cover;
     width: 99%;
     height: 80%;
-    border: 3px dotted red;
 }
 
 
@@ -72,7 +71,6 @@ body {
     flex-direction: column;
     width: 60%;
     height: 100%;
-    border: 3px dotted black;
     margin: 100px;
 }
 
@@ -118,6 +116,9 @@ body {
     cursor: pointer;
 }
 
+#startSection {
+    display: inherit;
+}
 
 /*------------QUESTION SECTION-----------------*/
 .choiceSection {
@@ -127,7 +128,7 @@ body {
     flex-direction: column;
     width: 60%;
     height: 100%;
-    border: 3px dotted black;
+    border: 3px solid black;
     margin: 100px;
     padding: 10px 50px 50px 50px;
     background: cornsilk;
@@ -175,6 +176,9 @@ body {
     margin-bottom: 20px;
 }
 
+#choiceSection {
+    display: none;
+}
 
 /*---------------SCOREBOARD SECTION--------------------*/
 .scoreboardSection {
@@ -184,7 +188,7 @@ body {
     flex-direction: column;
     width: 45%;
     height: 100%;
-    border: 3px dotted black;
+    border: 3px solid black;
     margin: 100px;
     padding: 10px 50px 50px 50px;
     background: cornsilk;
@@ -193,13 +197,11 @@ body {
 .scoreboardSection h2 {
     text-align: center;
     width: 80%;
-    border: 3px dotted black;
     font-size: 28px;
 }
 
 .scoreboardSection h3 {
     width: 80%;
-    border: 3px dotted black;
     font-size: 18px;
 }
 
@@ -209,7 +211,6 @@ body {
 
 .scoreboardUl {
     list-style-type: none;
-    border: 3px solid black;
     width: 300px;
     text-align: center;
     background-color: var(--garfieldOrange);
@@ -222,6 +223,9 @@ body {
     border: 3px solid black;
 }
 
+#scoreboardSection {
+    display: none;
+}
 
 /*----------------RESPONSIVE BREAKPOINT SECTION-------------------*/
 /*Start section-------------*/
@@ -375,19 +379,6 @@ body {
 }
 
 /*
-.startSection
-.choiceSection
-.scoreboardSection
-.questionText
-.startButton
-.choiceButton
-.scoreboard
-#startSection
-#choiceSection
-#scoreboardSection
-#questionText
-#startButton
-#playAgainButton
 #choiceButton0
 #choiceButton1
 #choiceButton2

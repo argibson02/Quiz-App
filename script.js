@@ -106,6 +106,10 @@ var questionsObject = [
 var answerKeyArray2 = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 5];
 
 
+/*-Section variables for hiding/showing-*/
+var startSection = document.querySelector("#startSection");
+var choiceSection = document.querySelector("#choiceSection");
+var scoreboardSection = document.querySelector("#scoreboardSection");
 
 /*Start section variables*/
 var startButton = document.querySelector("#startButton");
@@ -118,20 +122,19 @@ var timeCount = document.getElementById("timerNumber");
 ///var scoreTime = 
 
 
-
-console.log(questionsObject.length + " qobject01"); // DELETE UPON COMPLETION 
-console.log(answerKeyArray2 + " key2"); // DELETE UPON COMPLETION 
+/*Scoreboard section variables*/
+var playAgainButton = document.querySelector("#playAgainButton");
 
 
 
 
 /*Functions for game*/
 function runGame () {
-    timerNumber()
+    timerNumber();
+    startSection.setAttribute("style", "display:none"); //swapping out the sections
+    choiceSection.setAttribute("style", "display:inherit");
     
 }
-
-
 
 
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
@@ -140,7 +143,7 @@ function saveInitials() {
     // Save related form data as an object
     var scoreInitials = {
       initials: initials.value.trim(),
-      time: time.value,
+      time: time.value, //needs to define this
     };
     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
     localStorage.setItem("saveInitials", JSON.stringify(saveInitials));
@@ -150,8 +153,9 @@ function saveInitials() {
 
 /*---------SAVING SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 function showScores() {
-    var score = JSON.parse(localStorage.getItem("timeScore"))
+    var score = JSON.parse(localStorage.getItem("timeScore"));
 }
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
@@ -159,29 +163,37 @@ function showScores() {
 /*----------TIMER   WIP-------------------------------------------------------------------------------------------------------------------------------------*/
 /*SEE 10, COUNT DOWN IS WORKING*/
 function timerNumber() {
-    var timeLeft = 61;
+    var timeLeft = 3;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timeCount.textContent = timeLeft;
         
-        if (timeLeft === 0) {
+        if (timeLeft <= 0) {
             clearInterval(timeInterval);
-        /*go to score screen */
+            choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+            scoreboardSection.setAttribute("style", "display:inherit");
+            //log score function 
         }
         //else if { //question numer is great than 20, go to scoreboard*/
         //    localStorage.getItem(timeLeft)
     //}
     }, 1000);
-  }
-timerNumber()
+}
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
+
+function playAgain() {
+    scoreboardSection.setAttribute("style", "display:none");
+    runGame()
+}
 
 
 
 // event listener for game start
 startButton.addEventListener("click", runGame);
+
+playAgainButton.addEventListener("click", playAgain);
 
 
 // localStorage.setItem("time", value)
