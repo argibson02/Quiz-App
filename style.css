@@ -117,7 +117,7 @@ body {
 }
 
 #startSection {
-    display: inherit;
+    display: none;
 }
 
 /*------------QUESTION SECTION-----------------*/
@@ -177,7 +177,7 @@ body {
 }
 
 #choiceSection {
-    display: none;
+    display: inherit;
 }
 
 /*---------------SCOREBOARD SECTION--------------------*/

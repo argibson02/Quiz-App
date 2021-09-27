@@ -103,7 +103,15 @@ var questionsObject = [
     },
 ]
 
+//0-19
 var answerKeyArray2 = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 5];
+console.log(questionsObject[0].question);
+console.log(questionsObject[0].choices[0]);
+console.log(questionsObject[0].answer);
+
+
+
+
 
 
 /*-Section variables for hiding/showing-*/
@@ -120,6 +128,7 @@ var initials = document.getElementById("initialText"); //might need to change th
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
 var questionText = document.getElementById("questionText");
+var choiceButton = document.querySelector(".choiceButton")
 var choiceButton0 = document.getElementById("#choiceButton0");
 var choiceButton1 = document.getElementById("#choiceButton1");
 var choiceButton2 = document.getElementById("#choiceButton2");
@@ -134,28 +143,38 @@ var playAgainButton = document.querySelector("#playAgainButton");
 
 
 /*Functions for game----------------------------------------------------------------------------------------------*/
-function runGame () {
+function runGame() {
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
+    multipleChoice()
     
 }
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*------MULTIPLE CHOICE BUTTONS, CYCLING, SCORING--------------------------------------------------------------------------------------------------------------------------------*/
 
-function multipleChoice () {
+function multipleChoice() {
 
+    
+    document.getElementById("questionText").innerHTML = questionsObject[0].question;
+    document.getElementById("choiceButton0").innerHTML = questionsObject[0].choices[0];
+    document.getElementById("choiceButton1").innerHTML = questionsObject[0].choices[1];
+    document.getElementById("choiceButton2").innerHTML = questionsObject[0].choices[2];
+    document.getElementById("choiceButton3").innerHTML = questionsObject[0].choices[3];
 
 
 }
 
+multipleChoice()
 
+function choiceButtonClick(event) {
+    event.stopPropagation();
 
+} 
+choiceButton.addEventListener("click", );
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
-
 
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 /*see #25*/
@@ -177,13 +196,10 @@ function showScores() {
 }
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-
-
-
 /*----------TIMER   WIP-------------------------------------------------------------------------------------------------------------------------------------*/
 /*SEE 10, COUNT DOWN IS WORKING*/
 function timerNumber() {
-    var timeLeft = 3;
+    var timeLeft = 3000;
     var timeInterval = setInterval(function () {
         timeLeft--;
         timeCount.textContent = timeLeft;
@@ -217,3 +233,7 @@ playAgainButton.addEventListener("click", playAgain);
 
 // localStorage.setItem("time", value)
 // localStorage.getItem("time")
+//var choiceButtonDynamic0 = document.getElementById("#choiceButton0");
+//var choiceButtonDynamic1 = document.getElementById("#choiceButton1");
+//var choiceButtonDynamic2 = document.getElementById("#choiceButton2");
+//var choiceButtonDynamic3 = document.getElementById("#choiceButton3");
