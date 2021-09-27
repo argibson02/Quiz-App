@@ -113,12 +113,17 @@ var scoreboardSection = document.querySelector("#scoreboardSection");
 
 /*Start section variables*/
 var startButton = document.querySelector("#startButton");
-var initials = document.getElementById("initialText");
+var initials = document.getElementById("initialText"); //might need to change the method
 
 
 
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
+var questionText = document.getElementById("questionText");
+var choiceButton0 = document.getElementById("#choiceButton0");
+var choiceButton1 = document.getElementById("#choiceButton1");
+var choiceButton2 = document.getElementById("#choiceButton2");
+var choiceButton3 = document.getElementById("#choiceButton3");
 ///var scoreTime = 
 
 
@@ -128,13 +133,28 @@ var playAgainButton = document.querySelector("#playAgainButton");
 
 
 
-/*Functions for game*/
+/*Functions for game----------------------------------------------------------------------------------------------*/
 function runGame () {
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
     
 }
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+/*------MULTIPLE CHOICE BUTTONS, CYCLING, SCORING--------------------------------------------------------------------------------------------------------------------------------*/
+
+function multipleChoice () {
+
+
+
+}
+
+
+
+
+/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
 
 
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
@@ -182,7 +202,7 @@ function timerNumber() {
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
-
+/*Play again button logic--------------------------------*/
 function playAgain() {
     scoreboardSection.setAttribute("style", "display:none");
     runGame()
@@ -190,9 +210,8 @@ function playAgain() {
 
 
 
-// event listener for game start
+// event listener for start game and play again
 startButton.addEventListener("click", runGame);
-
 playAgainButton.addEventListener("click", playAgain);
 
 
