@@ -317,7 +317,6 @@ function storeScores() {
 
 
 
-
 // Event listener for submit initials button
 submitButton.addEventListener("click", saveInitials);
 
