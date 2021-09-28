@@ -101,6 +101,11 @@ var questionsObject = [
         choices: ["I know, right?", "I know, right?", "I know, right?", "I know, right?"],
         answer: 1,
     },
+    {
+        question: "",
+        choices: [],
+        answer: 0,
+    },
 ]
 
 //0-19
@@ -109,7 +114,7 @@ console.log(questionsObject[0].question);
 console.log(questionsObject[0].choices[0]);
 console.log(questionsObject[0].answer);
 
-
+document.getElementById("questionText").innerHTML = (questionsObject[0].question);
 
 
 
@@ -133,8 +138,9 @@ var choiceButton0 = document.getElementById("#choiceButton0");
 var choiceButton1 = document.getElementById("#choiceButton1");
 var choiceButton2 = document.getElementById("#choiceButton2");
 var choiceButton3 = document.getElementById("#choiceButton3");
-var qIndex = 0;
+var index = -1;
 var currentQuestion;
+console.log(index + "index");
 
 ///var scoreTime = 
 
@@ -157,38 +163,50 @@ function runGame() {
 
 /*------MULTIPLE CHOICE BUTTONS, CYCLING, SCORING--------------------------------------------------------------------------------------------------------------------------------*/
 
-function multipleChoice(direction) {
-    qIndex = qIndex + direction
-    if (qIndex > questionsObject.length) {
-        localStorage.setItem("timeScore", timeLeft.value) // logging time score
+function multipleChoice() {
+    index += 1;
+    if (index > 19) {
+        //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+        clearInterval(timeInterval);
         choiceSection.setAttribute("style", "display:none"); //swapping out the sections
         scoreboardSection.setAttribute("style", "display:inherit");
     }
-    currentQuestion = 
-
-    document.getElementById("questionText").innerHTML = questionsObject[qIndex].question;
-    document.getElementById("choiceButton0").innerHTML = questionsObject[qIndex].choices[0];
-    document.getElementById("choiceButton1").innerHTML = questionsObject[qIndex].choices[1];
-    document.getElementById("choiceButton2").innerHTML = questionsObject[qIndex].choices[2];
-    document.getElementById("choiceButton3").innerHTML = questionsObject[qIndex].choices[3];
-
-
-
-
-
+    else {
+    currentQuestion = questionsObject[index];
+    console.log(index + "index");
+    document.getElementById("questionText").innerHTML = questionsObject[index].question;
+    document.getElementById("choiceButton0").innerHTML = questionsObject[index].choices[0];
+    document.getElementById("choiceButton1").innerHTML = questionsObject[index].choices[1];
+    document.getElementById("choiceButton2").innerHTML = questionsObject[index].choices[2];
+    document.getElementById("choiceButton3").innerHTML = questionsObject[index].choices[3];
+    }
+    //need to add listeners onto all buttons
 }
 multipleChoice()
 
 
-qIndex
-
-
-
-function choiceButtonClick(event) {
+//choiceButton.addEventListener("click", multipleChoice)
+choiceButton.addEventListener("click", function(event) {
     event.stopPropagation();
+    multipleChoice();
+});
 
+
+//function compareButtonChoice() {
+//    if (choice.choiceButton)
+//}
+
+//choiceButton0.addEventListener("click", compareButtonChoice);
+//choiceButton1.addEventListener("click", compareButtonChoice);
+//choiceButton2.addEventListener("click", compareButtonChoice);
+//choiceButton3.addEventListener("click", compareButtonChoice);
+
+
+function choiceButtonClick(event) { //cycling
+    event.stopPropagation();
 } 
-choiceButton.addEventListener("click", );
+
+//choiceButton.addEventListener("click", );
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
