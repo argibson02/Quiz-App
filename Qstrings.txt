@@ -68,4 +68,26 @@ var questionArray21 = ["", "", "", ""];
 //var questionArray21 = ["21. Why does Garfield hate Mondays???? Garfield is a cat. Every day is the same for him.", ["I know, right?", "I know, right?", "I know, right?", "I know, right?"]];  // 5
 
 
+
+
+
+
+take in input
+parse input for a,e,i,o,u
+for each occurecne, add to array
+reutrn on length of array
+
+could also do an sepertate array fo reach vowel if desired
+
+
 				
+				
+				
+take in input
+set input equal to var #1
+pasre var #1 into an array
+Starting at the last array location, for each letter put into array #2
+Join array #2 and set to be var #2
+compare var #1 and var #2
+If same, palindrome,
+else, it is not

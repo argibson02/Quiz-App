@@ -276,59 +276,54 @@ function multipleChoice() {
 }
 
 
-/*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
-/*see #25*/
+//-----------------------------------------------Saving initials and scores
 function saveInitials(event) {
     event.preventDefault();// KEEP!
-   
-    //console.log("save_initials"); // delete me
-    //console.log(JSON.stringify(initialsInput.value)); // delete me
+    if (initialsInput.value === "") {
+        return; // prevents null additions to the scoresArray
+    } 
+    else {
+    // Combining score and initials into an single string
     var initialsHandOff = initialsInput.value.toUpperCase();
-    //console.log(initialsHandOff); // delete me
     localStorage.setItem("initials", initialsHandOff);
-    //console.log(timeScore + "~~~ time score"); // delete me
     var scoreHandOff = timeScore;
-    //var scoreHandOff = localStorage.getItem(timeScore);
-    localStorage.setItem("scoresIndividual", initialsHandOff + ":  " + scoreHandOff);
-
-
-
+    var scoreAndInitials = (initialsHandOff + ": " + scoreHandOff + " points");
+    console.log(scoreAndInitials); // delete me
     
-    // Clear field and disabling
+    
+    scoresArray.push(scoreAndInitials);
+    console.log(scoresArray); // delete me
+    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
+    //var scoreHandOff = localStorage.getItem(timeScore);
+
+    // Clearing field and disabling further input
     initialsInput.value = "";
     document.getElementById("initialsText").disabled = true;
     document.getElementById("submitButton").disabled = true;
-
-}
-
-
-
-/*---------Creating lines for scores--------------------------------------------------------------------------------------------------------------------*/
-/*
-function showScores() { //need to make sure to run this scoring function 
-    scoreboardUl.innerHTML = ""
-    for (let i =0; i < scoresArray.length; i++) {
-        var scoreSet = scoresArray[i];
-        var scoreboardLi = document.createElement("li");
-        scoreboardLi.textContent = scoreSet;
-        scoreboardLi.setAttribute("data-index", i);
-        scoreboardUl.appendChild(li);
-    }
     
+    // Storing new addition to local storage
+    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
+    }
+    showScores();
 }
-*/
+
+// Function for clearing scoresArray
+function clearScores (event) {
+    event.preventDefault();
+    scoresArray = [];
+    console.log(scoresArray);
+}
 
 
-
-// Event listener for submit initials button
-submitButton.addEventListener("click", saveInitials);
 
 //--------------------------------------------------Event Listeners
+// Event listener for submit initials button
+submitButton.addEventListener("click", saveInitials);
+clearButton.addEventListener("click", clearScores);
+
 // Event listener for start game, play again, initials
 startButton.addEventListener("click", runGame);
 playAgainButton.addEventListener("click", playAgain);
-
-
 
 
 //  Event listener for penalties
@@ -357,18 +352,18 @@ choiceButton3.addEventListener("click", function(event) {
 
 
 
-//("submit", function(event) {
-//    event.preventDefault();
-//    var todoText = todoInput.value.trim();
-//    // TODO: Describe the functionality of the following `if` statement.
-//    if (todoText === "") {
-//      return;
-//    }
-//   // TODO: Describe the purpose of the following lines of code.
-//    todos.push(todoText);
-//    todoInput.value = "";
-//   
-//    // TODO: What will happen when the following functions are called?
-//    storeTodos();
-//    renderTodos();
-//  });
+
+/*---------Creating lines for scores--------------------------------------------------------------------------------------------------------------------*/
+/*
+function showScores() { //need to make sure to run this scoring function 
+    scoreboardUl.innerHTML = ""
+    for (let i =0; i < scoresArray.length; i++) {
+        var scoreSet = scoresArray[i];
+        var scoreboardLi = document.createElement("li");
+        scoreboardLi.textContent = scoreSet;
+        scoreboardLi.setAttribute("data-index", i);
+        scoreboardUl.appendChild(li);
+    }
+    
+}
+*/
