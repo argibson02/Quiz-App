@@ -158,7 +158,7 @@ function timerNumber() {
 
 //---------------------------------------------Function to Run Game
 function runGame() {
-    console.log("run game") // delete me
+    //console.log("run game") // delete me
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
@@ -167,7 +167,7 @@ function runGame() {
 
 //-----------------------------------------Function for Play Again
 function playAgain() {
-    console.log("play_Again") // delete me 
+    //console.log("play_Again") // delete me 
     scoreboardSection.setAttribute("style", "display:none");
     document.getElementById("initialsText").disabled = false;
     document.getElementById("submitButton").disabled = false;
@@ -279,22 +279,31 @@ function multipleChoice() {
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 /*see #25*/
 function saveInitials(event) {
-    event.preventDefault();
-    console.log("save_initials"); // delete me
-    console.log(JSON.stringify(initialsInput.value)); // delete me
-    localStorage.setItem("initials", initialsInput.value);
+    event.preventDefault();// KEEP!
+   
+    //console.log("save_initials"); // delete me
+    //console.log(JSON.stringify(initialsInput.value)); // delete me
+    var initialsHandOff = initialsInput.value.toUpperCase();
+    //console.log(initialsHandOff); // delete me
+    localStorage.setItem("initials", initialsHandOff);
+    //console.log(timeScore + "~~~ time score"); // delete me
+    var scoreHandOff = timeScore;
+    //var scoreHandOff = localStorage.getItem(timeScore);
+    localStorage.setItem("scoresIndividual", initialsHandOff + ":  " + scoreHandOff);
+
+
+
+    
+    // Clear field and disabling
     initialsInput.value = "";
     document.getElementById("initialsText").disabled = true;
     document.getElementById("submitButton").disabled = true;
-    storeScores()
-    //localStorage.setItem("leaderArray", scoresArray)
- 
 
 }
 
 
 
-/*---------SAVING SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
+/*---------Creating lines for scores--------------------------------------------------------------------------------------------------------------------*/
 /*
 function showScores() { //need to make sure to run this scoring function 
     scoreboardUl.innerHTML = ""
@@ -308,12 +317,6 @@ function showScores() { //need to make sure to run this scoring function
     
 }
 */
-function storeScores() {
-    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
-
-} 
-
-
 
 
 
