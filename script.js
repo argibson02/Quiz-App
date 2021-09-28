@@ -108,16 +108,10 @@ var questionsObject = [
     },
 ];
 
-//0-19
-var answerKeyArray2 = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 0, 4];
-console.log(questionsObject[0].question);
-console.log(questionsObject[0].choices[0]);
-console.log(questionsObject[0].answer);
-
-document.getElementById("questionText").innerHTML = (questionsObject[0].question);
-
-
-
+//var answerKeyArray = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 0, 4];
+//console.log(questionsObject[0].question);    // delete me
+//console.log(questionsObject[0].choices[0]);  // delete me
+//console.log(questionsObject[0].answer);      // delete me
 
 /*-Section variables for hiding/showing-*/
 var startSection = document.querySelector("#startSection");
@@ -127,8 +121,6 @@ var scoreboardSection = document.querySelector("#scoreboardSection");
 /*Start section variables*/
 var startButton = document.querySelector("#startButton");
 var initials = document.getElementById("initialText"); //might need to change the method
-
-
 
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
@@ -153,7 +145,7 @@ var playAgainButton = document.querySelector("#playAgainButton");
 
 //////////////////////////////// TIMER
 function timerNumber() {
-    timeLeft = 3000;
+    timeLeft = 501;
     timeInterval = setInterval(function () {
         timeLeft--;
         timeCount.textContent = timeLeft;
@@ -167,23 +159,20 @@ function timerNumber() {
 }
 
 
-/*Functions for game----------------------------------------------------------------------------------------------*/
+/////////////////// Functions for game
 function runGame() {
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
-    multipleChoice();
-    
+    multipleChoice();  
 }
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
-/*PENALTIES----------------------------------------------------*/
+
+////////////////////// Penalties
 function compareButtonChoice0() {
     if (parseInt(questionsObject[index].answer) !== 0) {
-        console.log(index + "index"); // delete me
-        console.log(questionsObject[index].answer + "- answer index"); // delete me
         var timePenalty = parseInt(timeLeft);
         timeLeft = (timePenalty - 17);
         //console.log(index + "index"); // delete me
@@ -192,7 +181,7 @@ function compareButtonChoice0() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
+                console.log(timeScore + " time score"); // delete me
                 //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -212,7 +201,7 @@ function compareButtonChoice1() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
+                console.log(timeScore + " time score"); // delete me
                 //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -232,7 +221,7 @@ function compareButtonChoice2() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
+                console.log(timeScore + " time score"); // delete me
                 //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -252,7 +241,7 @@ function compareButtonChoice3() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
+                console.log(timeScore + " time score"); // delete me
                 //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -270,15 +259,17 @@ choiceButton3.addEventListener("click", compareButtonChoice3);
 
 
 
-//choiceButton.addEventListener("click", );
 
-/*------MULTIPLE CHOICE BUTTONS, CYCLING, SCORING--------------------------------------------------------------------------------------------------------------------------------*/
+// Multiple choice buttons and cycling logic
+//function choiceButtonClick(event) { //cycling
+//    event.stopPropagation();
+//}
 
 function multipleChoice() {
     index += 1;
     if (index > 19) {
         timeScore = parseInt(timeLeft);
-        //console.log(timeScore + " time score"); // delete me
+        console.log(timeScore + " time score"); // delete me
         //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
         clearInterval(timeInterval);
         choiceSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -292,26 +283,11 @@ function multipleChoice() {
     document.getElementById("choiceButton2").innerHTML = questionsObject[index].choices[2];
     document.getElementById("choiceButton3").innerHTML = questionsObject[index].choices[3];
     }
-
-
-    
-    //need to add listeners onto all buttons
 }
-multipleChoice(); /// delete me
-timerNumber(); /// delete me
+//multipleChoice(); /// delete me
+//timerNumber(); /// delete me
 
 
-//choiceButton.addEventListener("click", multipleChoice)
-choiceButton.addEventListener("click", function(event) {
-    event.stopPropagation();
-    multipleChoice();
-});
-
-function choiceButtonClick(event) { //cycling
-    event.stopPropagation();
-} 
-
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 /*see #25*/
@@ -323,16 +299,13 @@ function saveInitials() {
     };
     // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
     localStorage.setItem("saveInitials", JSON.stringify(saveInitials));
-  }
+}
 
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 /*---------SAVING SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 function showScores() {
     var score = JSON.parse(localStorage.getItem("timeScore"));
 }
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
-
 
 
 /*Play again button logic--------------------------------*/
@@ -346,6 +319,24 @@ function playAgain() {
 // event listener for start game and play again
 startButton.addEventListener("click", runGame);
 playAgainButton.addEventListener("click", playAgain);
+
+//choiceButton.addEventListener("click", multipleChoice)
+choiceButton0.addEventListener("click", function(event) {
+    event.stopPropagation();
+    multipleChoice();
+});
+choiceButton1.addEventListener("click", function(event) {
+    event.stopPropagation();
+    multipleChoice();
+});
+choiceButton2.addEventListener("click", function(event) {
+    event.stopPropagation();
+    multipleChoice();
+});
+choiceButton3.addEventListener("click", function(event) {
+    event.stopPropagation();
+    multipleChoice();
+});
 
 
 // localStorage.setItem("time", value)

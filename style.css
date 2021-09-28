@@ -117,7 +117,7 @@ body {
 }
 
 #startSection {
-    display: none;
+    display: inherit;
 }
 
 /*------------QUESTION SECTION-----------------*/
@@ -177,7 +177,7 @@ body {
 }
 
 #choiceSection {
-    display: inherit;
+    display: none;
 }
 
 /*---------------SCOREBOARD SECTION--------------------*/
@@ -377,11 +377,3 @@ body {
         width: 100%;
     }
 }
-
-/*
-#choiceButton0
-#choiceButton1
-#choiceButton2
-#choiceButton3
-#scoreboard
-*/
