@@ -119,8 +119,8 @@ var initialsInput = document.getElementById("initialsText");
 
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
-var questionText = document.getElementById("questionText");
-var choiceButton = document.querySelector(".choiceButton");
+var questionText = document.getElementById("questionText");  // delete me
+var choiceButton = document.querySelector(".choiceButton");  // delete me
 var choiceButton0 = document.querySelector("#choiceButton0");
 var choiceButton1 = document.querySelector("#choiceButton1");
 var choiceButton2 = document.querySelector("#choiceButton2");
@@ -133,7 +133,8 @@ var timeInterval = 0;
 /*Scoreboard section variables*/
 var playAgainButton = document.querySelector("#playAgainButton");
 var submitButton = document.querySelector("#submitButton");
-var scoreboardUl = document.querySelector("#scoreboardUl");
+var clearButton = document.querySelector("#clearButton");
+var scoreboardUl = document.querySelector("#scoreboardUl");   // delete me?
 var scoresArray = [];
 
 
@@ -277,6 +278,16 @@ function multipleChoice() {
 
 
 //-----------------------------------------------Saving initials and scores
+// Function to pull scores from storage   #3
+function storeScores() {
+    var newScoreArray = JSON.parse(localStorage.getItem("scoresArray")); //stored as string. Need an array
+    console.log(newScoreArray); //  DELETE ME
+    scoresArray =  newScoreArray; // 
+
+}
+
+
+// Function to save scores  #1
 function saveInitials(event) {
     event.preventDefault();// KEEP!
     if (initialsInput.value === "") {
@@ -291,7 +302,7 @@ function saveInitials(event) {
     console.log(scoreAndInitials); // delete me
     
     
-    scoresArray.push(scoreAndInitials);
+    scoresArray.push(scoreAndInitials); // this may create a bug with scoring if someone refreshes the page
     console.log(scoresArray); // delete me
     localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
     //var scoreHandOff = localStorage.getItem(timeScore);
@@ -303,15 +314,28 @@ function saveInitials(event) {
     
     // Storing new addition to local storage
     localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
+
     }
-    showScores();
+    storeScores();
 }
 
-// Function for clearing scoresArray
+// Function for clearing scoresArray #2 
 function clearScores (event) {
     event.preventDefault();
-    scoresArray = [];
-    console.log(scoresArray);
+    localStorage.setItem("scoresArray", ""); // clears local storage
+    scoresArray = []; // clears javascript storage
+    console.log(scoresArray); // delete me
+     
+}
+
+
+
+function renderScores() {
+    for (let i = 0; i < scoresArray.length; i++);
+    var scoreboardLi = document.createElement("li");
+    scoreboardLi.textContent = scoresArray[i];
+    scoreboardLi.setAttribute("data-index", i);
+    scoreboardUl.appendChild(li);
 }
 
 
@@ -349,6 +373,57 @@ choiceButton3.addEventListener("click", function(event) {
     event.stopPropagation();
     multipleChoice();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
