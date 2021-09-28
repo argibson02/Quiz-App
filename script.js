@@ -311,6 +311,7 @@ function showScores() {
 /*Play again button logic--------------------------------*/
 function playAgain() {
     scoreboardSection.setAttribute("style", "display:none");
+    index = -1;
     runGame();
 }
 
