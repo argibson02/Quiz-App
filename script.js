@@ -96,11 +96,11 @@ var questionsObject = [
         choices: ["Mousing", "Mondays", "Diets", "All of the above"],
         answer: 3,
     },
-    {
-        question: "Why does Garfield hate Mondays???? Garfield is a cat. Every day is the same for him.",
-        choices: ["I know, right?", "I know, right?", "I know, right?", "I know, right?"],
-        answer: 1,
-    },
+    //{
+    //    question: "Why does Garfield hate Mondays???? Garfield is a cat. Every day is the same for him.",
+    //    choices: ["I know, right?", "I know, right?", "I know, right?", "I know, right?"],
+    //    answer: 1,
+    //},
     {
         question: "",
         choices: [],
@@ -115,8 +115,7 @@ var scoreboardSection = document.querySelector("#scoreboardSection");
 
 /*Start section variables*/
 var startButton = document.querySelector("#startButton");
-var initials = document.getElementById("initialText"); //might need to change the method
-var initialsInput = document.querySelector("initialText");
+var initialsInput = document.getElementById("initialsText");
 
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
@@ -134,9 +133,9 @@ var timeInterval = 0;
 /*Scoreboard section variables*/
 var playAgainButton = document.querySelector("#playAgainButton");
 var submitButton = document.querySelector("#submitButton");
-var scores = [];
 var scoreboardUl = document.querySelector("#scoreboardUl");
 var scoresArray = [];
+
 
 ////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
 //------------------------------------------------Timer
@@ -159,12 +158,22 @@ function timerNumber() {
 
 //---------------------------------------------Function to Run Game
 function runGame() {
+    console.log("run game") // delete me
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
     multipleChoice();  
 }
 
+//-----------------------------------------Function for Play Again
+function playAgain() {
+    console.log("play_Again") // delete me 
+    scoreboardSection.setAttribute("style", "display:none");
+    document.getElementById("initialsText").disabled = false;
+    document.getElementById("submitButton").disabled = false;
+    index = -1;
+    runGame();
+}
 
 //----------------------------------------------------------Penalties
 function compareButtonChoice0() {
@@ -248,7 +257,7 @@ function compareButtonChoice3() {
 // -------------------------------------------Multiple choice buttons and cycling logic
 function multipleChoice() {
     index += 1;
-    if (index > 19) {
+    if (index > 18) {
         timeScore = parseInt(timeLeft);
         console.log(timeScore + " time score"); // delete me
         localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
@@ -269,33 +278,28 @@ function multipleChoice() {
 
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 /*see #25*/
-function saveInitials() {
-    
-    var initialsText = initials.value;
-    if (initialsText === "") {
-        initialsText === "Anonymous"
-    }
-    scoresList.push(initialsText)
-    localStorage.setItem("initials", JSON.stringify(initialsText));
-    localStorage.setItem("leaderArray", scoresList);
+function saveInitials(event) {
+    event.preventDefault();
+    console.log("save_initials"); // delete me
+    console.log(JSON.stringify(initialsInput.value)); // delete me
+    localStorage.setItem("initials", initialsInput.value);
+    initialsInput.value = "";
+    document.getElementById("initialsText").disabled = true;
+    document.getElementById("submitButton").disabled = true;
+    storeScores()
+    //localStorage.setItem("leaderArray", scoresArray)
+ 
 
-    //scores.push(initialsText)
-    //var scoreInitials = {
-    //  initials: initials.value.trim(),
-    //};
-    //localStorage.setItem("saveInitials", JSON.stringify(saveInitials));
-    
 }
 
 
-// localStorage.setItem("time", value)
-// localStorage.getItem("time")
 
 /*---------SAVING SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
+/*
 function showScores() { //need to make sure to run this scoring function 
     scoreboardUl.innerHTML = ""
-    for (let i =0; i < scores.length; i++) {
-        var scoreSet = scores[i];
+    for (let i =0; i < scoresArray.length; i++) {
+        var scoreSet = scoresArray[i];
         var scoreboardLi = document.createElement("li");
         scoreboardLi.textContent = scoreSet;
         scoreboardLi.setAttribute("data-index", i);
@@ -303,9 +307,9 @@ function showScores() { //need to make sure to run this scoring function
     }
     
 }
-
+*/
 function storeScores() {
-    localStorage.setItem("scores", JSON.stringify(scores));
+    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
 
 } 
 
@@ -314,29 +318,14 @@ function storeScores() {
 
 
 
-//-----------------------------------------Function for Play Again
-function playAgain() {
-    scoreboardSection.setAttribute("style", "display:none");
-    index = -1;
-    runGame();
-}
-
+// Event listener for submit initials button
+submitButton.addEventListener("click", saveInitials);
 
 //--------------------------------------------------Event Listeners
 // Event listener for start game, play again, initials
 startButton.addEventListener("click", runGame);
 playAgainButton.addEventListener("click", playAgain);
 
-// Event listener for submit initials button
-submitButton.addEventListener("submit", function(event) {
-    event.preventDefault();
-    if (todoText === "") {
-        return;
-    }
-    var initialsText = initials.value;
-    scoresList.push(initialsText)
-    localStorage.setItem("initials", JSON.stringify(initialsText));
-    localStorage.setItem("leaderArray", scoresList);
 
 
 
