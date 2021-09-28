@@ -9,12 +9,12 @@ var questionsObject = [
     {
         question: "What is Garfield’s favorite food?",
         choices: ["Tuna", "Purina", "Lasagna", "Pizza"],
-        answer: 3,
+        answer: 2,
     },
     {
         question: "What day does Garfield hate?",
         choices: ["Wednesdays", "Mondays", "Fridays", "Sundays"],
-        answer: 3,
+        answer: 1,
     },
     {
         question: "Who is Garfield’s dog friend?",
@@ -106,10 +106,10 @@ var questionsObject = [
         choices: [],
         answer: 0,
     },
-]
+];
 
 //0-19
-var answerKeyArray2 = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 5];
+var answerKeyArray2 = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 0, 4];
 console.log(questionsObject[0].question);
 console.log(questionsObject[0].choices[0]);
 console.log(questionsObject[0].answer);
@@ -133,16 +133,15 @@ var initials = document.getElementById("initialText"); //might need to change th
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
 var questionText = document.getElementById("questionText");
-var choiceButton = document.querySelector(".choiceButton")
-var choiceButton0 = document.getElementById("#choiceButton0");
-var choiceButton1 = document.getElementById("#choiceButton1");
-var choiceButton2 = document.getElementById("#choiceButton2");
-var choiceButton3 = document.getElementById("#choiceButton3");
+var choiceButton = document.querySelector(".choiceButton");
+var choiceButton0 = document.querySelector("#choiceButton0");
+var choiceButton1 = document.querySelector("#choiceButton1");
+var choiceButton2 = document.querySelector("#choiceButton2");
+var choiceButton3 = document.querySelector("#choiceButton3");
 var index = -1;
-var currentQuestion;
-console.log(index + "index");
-
-///var scoreTime = 
+var timeScore = 0;
+var timeLeft = 0;
+var timeInterval = 0;
 
 
 /*Scoreboard section variables*/
@@ -151,38 +150,155 @@ var playAgainButton = document.querySelector("#playAgainButton");
 
 
 
+
+//////////////////////////////// TIMER
+function timerNumber() {
+    timeLeft = 3000;
+    timeInterval = setInterval(function () {
+        timeLeft--;
+        timeCount.textContent = timeLeft;
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval);
+            choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+            scoreboardSection.setAttribute("style", "display:inherit");
+            //log score function 
+        }
+    }, 1000);
+}
+
+
 /*Functions for game----------------------------------------------------------------------------------------------*/
 function runGame() {
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
-    multipleChoice()
+    multipleChoice();
     
 }
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
+/*PENALTIES----------------------------------------------------*/
+function compareButtonChoice0() {
+    if (parseInt(questionsObject[index].answer) !== 0) {
+        console.log(index + "index"); // delete me
+        console.log(questionsObject[index].answer + "- answer index"); // delete me
+        var timePenalty = parseInt(timeLeft);
+        timeLeft = (timePenalty - 17);
+        //console.log(index + "index"); // delete me
+        //console.log(questionsObject[index].answer + "- answer index"); // delete me
+        timeInterval = setInterval(function () {
+        timeCount.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                timeScore = parseInt(timeLeft);
+                //console.log(timeScore + " time score"); // delete me
+                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                clearInterval(timeInterval);
+                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+                scoreboardSection.setAttribute("style", "display:inherit");
+            }
+        },1000);
+    }
+}
+
+function compareButtonChoice1() {
+    if (parseInt(questionsObject[index].answer) !== 1) {
+        var timePenalty = parseInt(timeLeft);
+        timeLeft = (timePenalty - 17);
+        //console.log(index + "index"); // delete me
+        //console.log(questionsObject[index].answer + "- answer index"); // delete me
+        timeInterval = setInterval(function () {
+        timeCount.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                timeScore = parseInt(timeLeft);
+                //console.log(timeScore + " time score"); // delete me
+                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                clearInterval(timeInterval);
+                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+                scoreboardSection.setAttribute("style", "display:inherit");
+            }
+        },1000);
+    }
+}
+
+function compareButtonChoice2() {
+    if (parseInt(questionsObject[index].answer) !== 2) {
+        var timePenalty = parseInt(timeLeft);
+        timeLeft = (timePenalty - 17);
+        //console.log(index + "index"); // delete me
+        //console.log(questionsObject[index].answer + "- answer index"); // delete me
+        timeInterval = setInterval(function () {
+        timeCount.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                timeScore = parseInt(timeLeft);
+                //console.log(timeScore + " time score"); // delete me
+                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                clearInterval(timeInterval);
+                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+                scoreboardSection.setAttribute("style", "display:inherit");
+            }
+        },1000);
+    }
+}
+
+function compareButtonChoice3() {
+    if (parseInt(questionsObject[index].answer) !== 3) {
+        var timePenalty = parseInt(timeLeft);
+        timeLeft = (timePenalty - 17);
+        //console.log(index + "index"); // delete me
+        //console.log(questionsObject[index].answer + "- answer index"); // delete me
+        timeInterval = setInterval(function () {
+        timeCount.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                timeScore = parseInt(timeLeft);
+                //console.log(timeScore + " time score"); // delete me
+                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                clearInterval(timeInterval);
+                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
+                scoreboardSection.setAttribute("style", "display:inherit");
+            }
+        },1000);
+    }
+}
+
+/////////////////// Event listeners for penalties
+choiceButton0.addEventListener("click", compareButtonChoice0);
+choiceButton1.addEventListener("click", compareButtonChoice1);
+choiceButton2.addEventListener("click", compareButtonChoice2);
+choiceButton3.addEventListener("click", compareButtonChoice3);
+
+
+
+//choiceButton.addEventListener("click", );
 
 /*------MULTIPLE CHOICE BUTTONS, CYCLING, SCORING--------------------------------------------------------------------------------------------------------------------------------*/
 
 function multipleChoice() {
     index += 1;
     if (index > 19) {
+        timeScore = parseInt(timeLeft);
+        //console.log(timeScore + " time score"); // delete me
         //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
         clearInterval(timeInterval);
         choiceSection.setAttribute("style", "display:none"); //swapping out the sections
         scoreboardSection.setAttribute("style", "display:inherit");
     }
     else {
-    currentQuestion = questionsObject[index];
-    console.log(index + "index");
+    //console.log(index + "index"); // delete me
     document.getElementById("questionText").innerHTML = questionsObject[index].question;
     document.getElementById("choiceButton0").innerHTML = questionsObject[index].choices[0];
     document.getElementById("choiceButton1").innerHTML = questionsObject[index].choices[1];
     document.getElementById("choiceButton2").innerHTML = questionsObject[index].choices[2];
     document.getElementById("choiceButton3").innerHTML = questionsObject[index].choices[3];
     }
+
+
+    
     //need to add listeners onto all buttons
 }
-multipleChoice()
+multipleChoice(); /// delete me
+timerNumber(); /// delete me
 
 
 //choiceButton.addEventListener("click", multipleChoice)
@@ -191,22 +307,9 @@ choiceButton.addEventListener("click", function(event) {
     multipleChoice();
 });
 
-
-//function compareButtonChoice() {
-//    if (choice.choiceButton)
-//}
-
-//choiceButton0.addEventListener("click", compareButtonChoice);
-//choiceButton1.addEventListener("click", compareButtonChoice);
-//choiceButton2.addEventListener("click", compareButtonChoice);
-//choiceButton3.addEventListener("click", compareButtonChoice);
-
-
 function choiceButtonClick(event) { //cycling
     event.stopPropagation();
 } 
-
-//choiceButton.addEventListener("click", );
 
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -230,32 +333,12 @@ function showScores() {
 }
 /*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
-/*----------TIMER   WIP-------------------------------------------------------------------------------------------------------------------------------------*/
-/*SEE 10, COUNT DOWN IS WORKING*/
-function timerNumber() {
-    var timeLeft = 3000;
-    var timeInterval = setInterval(function () {
-        timeLeft--;
-        timeCount.textContent = timeLeft;
-        
-        if (timeLeft <= 0) {
-            clearInterval(timeInterval);
-            choiceSection.setAttribute("style", "display:none"); //swapping out the sections
-            scoreboardSection.setAttribute("style", "display:inherit");
-            //log score function 
-        }
-        //else if { //question numer is great than 20, go to scoreboard*/
-        //    localStorage.getItem(timeLeft)
-    //}
-    }, 1000);
-}
-/*----------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
 
 /*Play again button logic--------------------------------*/
 function playAgain() {
     scoreboardSection.setAttribute("style", "display:none");
-    runGame()
+    runGame();
 }
 
 
@@ -267,7 +350,3 @@ playAgainButton.addEventListener("click", playAgain);
 
 // localStorage.setItem("time", value)
 // localStorage.getItem("time")
-//var choiceButtonDynamic0 = document.getElementById("#choiceButton0");
-//var choiceButtonDynamic1 = document.getElementById("#choiceButton1");
-//var choiceButtonDynamic2 = document.getElementById("#choiceButton2");
-//var choiceButtonDynamic3 = document.getElementById("#choiceButton3");
