@@ -19,11 +19,8 @@
             <h1 id="spinnyh1">Garfield's Puzzle Castle</h1>
         </div>
         <article id="welcomeText">
-            <p>Hello there, and welcome to Garfield’s Puzzle Castle! Think you can outsmart me, Garfield, the most intelligent and greatest cat in existence??? Enter your initials and click the button below to find out!</p>
+            <p>Hello there, and welcome to Garfield’s Puzzle Castle! Think you can outsmart me, Garfield, the most intelligent and greatest cat in existence??? Click the button below to find out!</p>
         </article>
-         <form class="initialForm" id="initialForm">
-            <input placeholder="Your initials here!" name="initials" id="initialText" type="text"></input>
-         </form>
         <button class="startButton" id="startButton">I am definitely not smarter than a cat.</button>
     </section>
 
@@ -45,6 +42,10 @@
         <h2>How did you do? If you got any less than 100% you must play it again!</h2>
         <button class="startButton" id="playAgainButton">I’m sorry, Garfield. I can do better! Please let me take the quiz again!</button>
         <div class="scoreboard" id="scoreboard">
+            <form class="initialForm" id="initialForm">
+                <input placeholder="Your initials here!" name="initials" id="initialText" type="text"></input>
+                <input type="submit" value="Submit!" id="submitButton">
+             </form>
             <h3>Leaderboard:</h3>
             <ul class="scoreboardUl" id="scoreboardUl">
                 <li class="scoreboardLi" id="scoreboardLi0">-</li>

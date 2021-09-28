@@ -1,4 +1,4 @@
-/*Global Variables, */
+////////////////////////////////////////////////////////// VARIABLES ///////////////////////////////////////////////////////////////////
 /*Questions Variables*/
 var questionsObject = [
     {
@@ -67,7 +67,7 @@ var questionsObject = [
         answer: 0,
     },
     {
-        question: "How many panels are in a Sunday Garfield strip? (Not including the header panel)",
+        question: "How many panels are in a Sunday Garfield strip?",
         choices: ["6", "7", "8", "9"],
         answer: 1,
     },
@@ -108,11 +108,6 @@ var questionsObject = [
     },
 ];
 
-//var answerKeyArray = [0, 2, 1, 0, 3, 0, 2, 3, 1, 0, 1, 1, 0, 1, 2, 0, 3, 1, 3, 0, 4];
-//console.log(questionsObject[0].question);    // delete me
-//console.log(questionsObject[0].choices[0]);  // delete me
-//console.log(questionsObject[0].answer);      // delete me
-
 /*-Section variables for hiding/showing-*/
 var startSection = document.querySelector("#startSection");
 var choiceSection = document.querySelector("#choiceSection");
@@ -121,6 +116,7 @@ var scoreboardSection = document.querySelector("#scoreboardSection");
 /*Start section variables*/
 var startButton = document.querySelector("#startButton");
 var initials = document.getElementById("initialText"); //might need to change the method
+var initialsInput = document.querySelector("initialText");
 
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
@@ -135,31 +131,33 @@ var timeScore = 0;
 var timeLeft = 0;
 var timeInterval = 0;
 
-
 /*Scoreboard section variables*/
 var playAgainButton = document.querySelector("#playAgainButton");
+var submitButton = document.querySelector("#submitButton");
+var scores = [];
+var scoreboardUl = document.querySelector("#scoreboardUl");
+var scoresArray = [];
 
-
-
-
-
-//////////////////////////////// TIMER
+////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
+//------------------------------------------------Timer
 function timerNumber() {
     timeLeft = 501;
     timeInterval = setInterval(function () {
         timeLeft--;
         timeCount.textContent = timeLeft;
         if (timeLeft <= 0) {
+            timeScore = parseInt(timeLeft);
+            console.log(timeScore + " time score"); // delete me
+            localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
             clearInterval(timeInterval);
             choiceSection.setAttribute("style", "display:none"); //swapping out the sections
             scoreboardSection.setAttribute("style", "display:inherit");
-            //log score function 
         }
     }, 1000);
 }
 
 
-/////////////////// Functions for game
+//---------------------------------------------Function to Run Game
 function runGame() {
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -168,9 +166,7 @@ function runGame() {
 }
 
 
-
-
-////////////////////// Penalties
+//----------------------------------------------------------Penalties
 function compareButtonChoice0() {
     if (parseInt(questionsObject[index].answer) !== 0) {
         var timePenalty = parseInt(timeLeft);
@@ -182,7 +178,7 @@ function compareButtonChoice0() {
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
                 console.log(timeScore + " time score"); // delete me
-                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
@@ -190,7 +186,6 @@ function compareButtonChoice0() {
         },1000);
     }
 }
-
 function compareButtonChoice1() {
     if (parseInt(questionsObject[index].answer) !== 1) {
         var timePenalty = parseInt(timeLeft);
@@ -202,7 +197,7 @@ function compareButtonChoice1() {
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
                 console.log(timeScore + " time score"); // delete me
-                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
@@ -210,7 +205,6 @@ function compareButtonChoice1() {
         },1000);
     }
 }
-
 function compareButtonChoice2() {
     if (parseInt(questionsObject[index].answer) !== 2) {
         var timePenalty = parseInt(timeLeft);
@@ -222,7 +216,7 @@ function compareButtonChoice2() {
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
                 console.log(timeScore + " time score"); // delete me
-                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
@@ -230,7 +224,6 @@ function compareButtonChoice2() {
         },1000);
     }
 }
-
 function compareButtonChoice3() {
     if (parseInt(questionsObject[index].answer) !== 3) {
         var timePenalty = parseInt(timeLeft);
@@ -242,7 +235,7 @@ function compareButtonChoice3() {
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
                 console.log(timeScore + " time score"); // delete me
-                //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+                localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
@@ -251,26 +244,14 @@ function compareButtonChoice3() {
     }
 }
 
-/////////////////// Event listeners for penalties
-choiceButton0.addEventListener("click", compareButtonChoice0);
-choiceButton1.addEventListener("click", compareButtonChoice1);
-choiceButton2.addEventListener("click", compareButtonChoice2);
-choiceButton3.addEventListener("click", compareButtonChoice3);
 
-
-
-
-// Multiple choice buttons and cycling logic
-//function choiceButtonClick(event) { //cycling
-//    event.stopPropagation();
-//}
-
+// -------------------------------------------Multiple choice buttons and cycling logic
 function multipleChoice() {
     index += 1;
     if (index > 19) {
         timeScore = parseInt(timeLeft);
         console.log(timeScore + " time score"); // delete me
-        //localStorage.setItem("timeScore", timeLeft.value) // logging time score, currently doiesn't work
+        localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
         clearInterval(timeInterval);
         choiceSection.setAttribute("style", "display:none"); //swapping out the sections
         scoreboardSection.setAttribute("style", "display:inherit");
@@ -284,31 +265,56 @@ function multipleChoice() {
     document.getElementById("choiceButton3").innerHTML = questionsObject[index].choices[3];
     }
 }
-//multipleChoice(); /// delete me
-//timerNumber(); /// delete me
-
 
 
 /*---------SAVING INITIALS AND SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
 /*see #25*/
 function saveInitials() {
-    // Save related form data as an object
-    var scoreInitials = {
-      initials: initials.value.trim(),
-      time: time.value, //needs to define this
-    };
-    // Use .setItem() to store object in storage and JSON.stringify to convert it as a string
-    localStorage.setItem("saveInitials", JSON.stringify(saveInitials));
+    
+    var initialsText = initials.value;
+    if (initialsText === "") {
+        initialsText === "Anonymous"
+    }
+    scoresList.push(initialsText)
+    localStorage.setItem("initials", JSON.stringify(initialsText));
+    localStorage.setItem("leaderArray", scoresList);
+
+    //scores.push(initialsText)
+    //var scoreInitials = {
+    //  initials: initials.value.trim(),
+    //};
+    //localStorage.setItem("saveInitials", JSON.stringify(saveInitials));
+    
 }
 
+
+// localStorage.setItem("time", value)
+// localStorage.getItem("time")
 
 /*---------SAVING SCORE?-WIP--------------------------------------------------------------------------------------------------------------------*/
-function showScores() {
-    var score = JSON.parse(localStorage.getItem("timeScore"));
+function showScores() { //need to make sure to run this scoring function 
+    scoreboardUl.innerHTML = ""
+    for (let i =0; i < scores.length; i++) {
+        var scoreSet = scores[i];
+        var scoreboardLi = document.createElement("li");
+        scoreboardLi.textContent = scoreSet;
+        scoreboardLi.setAttribute("data-index", i);
+        scoreboardUl.appendChild(li);
+    }
+    
 }
 
+function storeScores() {
+    localStorage.setItem("scores", JSON.stringify(scores));
 
-/*Play again button logic--------------------------------*/
+} 
+
+
+
+
+
+
+//-----------------------------------------Function for Play Again
 function playAgain() {
     scoreboardSection.setAttribute("style", "display:none");
     index = -1;
@@ -316,12 +322,31 @@ function playAgain() {
 }
 
 
-
-// event listener for start game and play again
+//--------------------------------------------------Event Listeners
+// Event listener for start game, play again, initials
 startButton.addEventListener("click", runGame);
 playAgainButton.addEventListener("click", playAgain);
 
-//choiceButton.addEventListener("click", multipleChoice)
+// Event listener for submit initials button
+submitButton.addEventListener("submit", function(event) {
+    event.preventDefault();
+    if (todoText === "") {
+        return;
+    }
+    var initialsText = initials.value;
+    scoresList.push(initialsText)
+    localStorage.setItem("initials", JSON.stringify(initialsText));
+    localStorage.setItem("leaderArray", scoresList);
+
+
+
+//  Event listener for penalties
+choiceButton0.addEventListener("click", compareButtonChoice0);
+choiceButton1.addEventListener("click", compareButtonChoice1);
+choiceButton2.addEventListener("click", compareButtonChoice2);
+choiceButton3.addEventListener("click", compareButtonChoice3);
+
+//  Event listener for cycling choice buttons
 choiceButton0.addEventListener("click", function(event) {
     event.stopPropagation();
     multipleChoice();
@@ -340,5 +365,19 @@ choiceButton3.addEventListener("click", function(event) {
 });
 
 
-// localStorage.setItem("time", value)
-// localStorage.getItem("time")
+
+//("submit", function(event) {
+//    event.preventDefault();
+//    var todoText = todoInput.value.trim();
+//    // TODO: Describe the functionality of the following `if` statement.
+//    if (todoText === "") {
+//      return;
+//    }
+//   // TODO: Describe the purpose of the following lines of code.
+//    todos.push(todoText);
+//    todoInput.value = "";
+//   
+//    // TODO: What will happen when the following functions are called?
+//    storeTodos();
+//    renderTodos();
+//  });

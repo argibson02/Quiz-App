@@ -94,10 +94,6 @@ body {
     padding: 10px;
 }
 
-.initialForm{
-    width: 200px;
-} 
-
 .startButton {
     padding: 20px;
     border-radius: 10px;
@@ -208,6 +204,13 @@ body {
 #playAgainButton {
     padding: 15px;
 }
+
+.initialForm{
+    width: 300px;
+    margin-bottom: 5px;
+} 
+
+
 
 .scoreboardUl {
     list-style-type: none;
@@ -372,6 +375,11 @@ body {
         text-align: center;
     }
 
+    .initialForm{
+        width: 200px;
+        margin-bottom: 5px;
+    } 
+    
     #playAgainButton {
         margin: 15px;
         width: 100%;
