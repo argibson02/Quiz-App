@@ -135,7 +135,7 @@ var localCheck = [];
 ////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
 //------------------------------------------------Timer
 function timerNumber() {
-    timeLeft = 101;
+    timeLeft = 151;
     timeInterval = setInterval(function () {
         timeLeft--;
         timeCount.textContent = timeLeft;
