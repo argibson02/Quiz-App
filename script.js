@@ -96,11 +96,6 @@ var questionsObject = [
         choices: ["Mousing", "Mondays", "Diets", "All of the above"],
         answer: 3,
     },
-    //{
-    //    question: "Why does Garfield hate Mondays???? Garfield is a cat. Every day is the same for him.",
-    //    choices: ["I know, right?", "I know, right?", "I know, right?", "I know, right?"],
-    //    answer: 1,
-    //},
     {
         question: "",
         choices: [],
@@ -119,13 +114,11 @@ var initialsInput = document.getElementById("initialsText");
 
 /*Choice section variables*/
 var timeCount = document.getElementById("timerNumber");
-var questionText = document.getElementById("questionText");  // delete me
-var choiceButton = document.querySelector(".choiceButton");  // delete me
 var choiceButton0 = document.querySelector("#choiceButton0");
 var choiceButton1 = document.querySelector("#choiceButton1");
 var choiceButton2 = document.querySelector("#choiceButton2");
 var choiceButton3 = document.querySelector("#choiceButton3");
-var index = -1;
+var index = -1; // used to avoid +=1 from skipping item 0
 var timeScore = 0;
 var timeLeft = 0;
 var timeInterval = 0;
@@ -134,7 +127,7 @@ var timeInterval = 0;
 var playAgainButton = document.querySelector("#playAgainButton");
 var submitButton = document.querySelector("#submitButton");
 var clearButton = document.querySelector("#clearButton");
-var scoreboardUl = document.querySelector("#scoreboardUl");   // delete me?
+var scoreboardUl = document.querySelector("#scoreboardUl");
 var scoresArray = [];
 var localCheck = [];
 
@@ -142,14 +135,13 @@ var localCheck = [];
 ////////////////////////////////////////////////////////// FUNCTIONS ///////////////////////////////////////////////////////////////////
 //------------------------------------------------Timer
 function timerNumber() {
-    timeLeft = 501;
+    timeLeft = 101;
     timeInterval = setInterval(function () {
         timeLeft--;
         timeCount.textContent = timeLeft;
         if (timeLeft <= 0) {
             timeScore = parseInt(timeLeft);
-            //console.log(timeScore + " time score"); // delete me
-            localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
+            localStorage.setItem("timeScore", timeLeft);
             clearInterval(timeInterval);
             choiceSection.setAttribute("style", "display:none"); //swapping out the sections
             scoreboardSection.setAttribute("style", "display:inherit");
@@ -161,7 +153,6 @@ function timerNumber() {
 
 //---------------------------------------------Function to Run Game
 function runGame() {
-    //console.log("run game") // delete me
     timerNumber();
     startSection.setAttribute("style", "display:none"); //swapping out the sections
     choiceSection.setAttribute("style", "display:inherit");
@@ -170,7 +161,6 @@ function runGame() {
 
 //-----------------------------------------Function for Play Again
 function playAgain() {
-    //console.log("play_Again") // delete me 
     initialsInput.value = "";
     scoreboardSection.setAttribute("style", "display:none");
     document.getElementById("initialsText").disabled = false;
@@ -182,26 +172,20 @@ function playAgain() {
 
 //----------------------------------------------------Function for retrieving scores
 function checkScores() {
-    var localCheck = JSON.parse(localStorage.getItem("scoresArray"));
-    //var localCheckLgh = localCheck.length;
-    //var scoresArrayLgh = scoresArray.length;
-    if (localCheck === null) {
+    if (localStorage.getItem("scoresArray") === null) { // if the local storage array is null, we skip syncing
         return;
     }
-    else if (localCheck.length > scoresArray.length) {
+    else if (localStorage.getItem("scoresArray") === "") { // if the local storage array is an empty string, we skip syncing
+        return;
+    }
+    else {
+        localCheck = JSON.parse(localStorage.getItem("scoresArray")); // if not null, make it var local check
+    }
+
+    if (localCheck.length > scoresArray.length) { // if local storage is longer, we make it into the function array
         scoresArray = localCheck;
     }
-    console.log(localCheck + " this is the local array");
-    console.log(localCheck.length + "- LC");
-    console.log(scoresArray.length + "- SA");
-
 }
-
-    //if (localCheck.length > scoresArray.length) {
-    //    scoresArray = localCheck
-    //    console.log(localCheck  + "- LC if statements");
-    //    console.log(scoresArray + "- SA if statements");
-    //}
 
 
 //----------------------------------------------------Function for displaying scores
@@ -209,11 +193,10 @@ function displayScores() {
     checkScores();
     var htmlText = "";
     for (let i = 0; i < scoresArray.length; i++) {
-    htmlText += `<li class="scoreboardLi">${scoresArray[i]}</li>`;
+    htmlText += `<li class="scoreboardLi">${scoresArray[i]}</li>`; // adding on a list element for each item in the score array
     }
     scoreboardUl.innerHTML = htmlText;
 }
-
 
 
 //----------------------------------------------------------Penalties
@@ -221,80 +204,24 @@ function compareButtonChoice0() {
     if (parseInt(questionsObject[index].answer) !== 0) {
         var timePenalty = parseInt(timeLeft);
         timeLeft = (timePenalty - 17);
-        //console.log(index + "index"); // delete me
-        //console.log(questionsObject[index].answer + "- answer index"); // delete me
-        timeInterval = setInterval(function () {
-        timeCount.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
-                localStorage.setItem("timeScore", timeLeft);
-                clearInterval(timeInterval);
-                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
-                scoreboardSection.setAttribute("style", "display:inherit");
-                displayScores();
-            }
-        },1000);
     }
 }
 function compareButtonChoice1() {
     if (parseInt(questionsObject[index].answer) !== 1) {
         var timePenalty = parseInt(timeLeft);
         timeLeft = (timePenalty - 17);
-        //console.log(index + "index"); // delete me
-        //console.log(questionsObject[index].answer + "- answer index"); // delete me
-        timeInterval = setInterval(function () {
-        timeCount.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                timeScore = parseInt(timeLeft);
-                ///console.log(timeScore + " time score"); // delete me
-                localStorage.setItem("timeScore", timeLeft);
-                clearInterval(timeInterval);
-                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
-                scoreboardSection.setAttribute("style", "display:inherit");
-                displayScores();
-            }
-        },1000);
     }
 }
 function compareButtonChoice2() {
     if (parseInt(questionsObject[index].answer) !== 2) {
         var timePenalty = parseInt(timeLeft);
         timeLeft = (timePenalty - 17);
-        //console.log(index + "index"); // delete me
-        //console.log(questionsObject[index].answer + "- answer index"); // delete me
-        timeInterval = setInterval(function () {
-        timeCount.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
-                localStorage.setItem("timeScore", timeLeft);
-                clearInterval(timeInterval);
-                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
-                scoreboardSection.setAttribute("style", "display:inherit");
-                displayScores();
-            }
-        },1000);
     }
 }
 function compareButtonChoice3() {
     if (parseInt(questionsObject[index].answer) !== 3) {
         var timePenalty = parseInt(timeLeft);
         timeLeft = (timePenalty - 17);
-        //console.log(index + "index"); // delete me
-        //console.log(questionsObject[index].answer + "- answer index"); // delete me
-        timeInterval = setInterval(function () {
-        timeCount.textContent = timeLeft;
-            if (timeLeft <= 0) {
-                timeScore = parseInt(timeLeft);
-                //console.log(timeScore + " time score"); // delete me
-                localStorage.setItem("timeScore", timeLeft);
-                clearInterval(timeInterval);
-                choiceSection.setAttribute("style", "display:none"); //swapping out the sections
-                scoreboardSection.setAttribute("style", "display:inherit");
-                displayScores();
-            }
-        },1000);
     }
 }
 
@@ -304,7 +231,6 @@ function multipleChoice() {
     index += 1;
     if (index > 18) {
         timeScore = parseInt(timeLeft);
-        console.log(timeScore + " time score"); // delete me
         localStorage.setItem("timeScore", timeLeft);
         clearInterval(timeInterval);
         choiceSection.setAttribute("style", "display:none"); //swapping out the sections
@@ -312,7 +238,6 @@ function multipleChoice() {
         displayScores();
     }
     else {
-    //console.log(index + "index"); // delete me
     document.getElementById("questionText").innerHTML = questionsObject[index].question;
     document.getElementById("choiceButton0").innerHTML = questionsObject[index].choices[0];
     document.getElementById("choiceButton1").innerHTML = questionsObject[index].choices[1];
@@ -322,68 +247,38 @@ function multipleChoice() {
 }
 
 
-//-----------------------------------------------Saving initials and scores
-// Function to pull scores from storage   #3
-function storeScores() {
-    var newScoreArray = JSON.parse(localStorage.getItem("scoresArray")); //stored as string. Need an array
-    console.log(newScoreArray); //  DELETE ME
-    scoresArray =  newScoreArray;
-
-}
-
-
-// Function to save scores  #1
+//-----------------------------------------------Saving and clearing initials and scores
+// Function to save scores
 function saveInitials(event) {
     event.preventDefault();// KEEP!
     if (initialsInput.value === "") {
         return; // prevents null additions to the scoresArray
     } 
     else {
-    // Combining score and initials into an single string
-    var initialsHandOff = initialsInput.value.toUpperCase();
+    var initialsHandOff = initialsInput.value.toUpperCase();  // Combining score and initials into an single string
     localStorage.setItem("initials", initialsHandOff);
     var scoreHandOff = timeScore;
     var scoreAndInitials = (initialsHandOff + ": " + scoreHandOff + " points");
-    console.log(scoreAndInitials); // delete me
     
-    
-    scoresArray.push(scoreAndInitials); // this may create a bug with scoring if someone refreshes the page
-    console.log(scoresArray); // delete me
-    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
-    //var scoreHandOff = localStorage.getItem(timeScore);
+    scoresArray.push(scoreAndInitials); // push that item to out javascript array
+    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));  // syncing javascript array and local storage, add to local storage
 
     // Clearing field and disabling further input
     initialsInput.value = "";
     document.getElementById("initialsText").disabled = true;
     document.getElementById("submitButton").disabled = true;
-    
-    // Storing new addition to local storage
-    localStorage.setItem("scoresArray", JSON.stringify(scoresArray));
-
     }
-    storeScores();
+    scoresArray = JSON.parse(localStorage.getItem("scoresArray")); //Array is stored as string in local storage. Grabbing it as an array and re-syncing the javascript array with local
     displayScores();
 }
 
-// Function for clearing scoresArray #2 
+// Function for clearing scoresArray
 function clearScores (event) {
     event.preventDefault();
     localStorage.setItem("scoresArray", ""); // clears local storage
     scoresArray = []; // clears javascript storage
-    console.log(scoresArray); // delete me
     scoreboardUl.innerHTML = ""; 
 }
-
-
-
-//function displayScores() {
-//    for (let i = 0; i < scoresArray.length; i++);
-//    var scoreboardLi = document.createElement("li");
-//    scoreboardLi.textContent = scoresArray[i];
-//    scoreboardLi.setAttribute("data-index", i);
-//    scoreboardUl.appendChild(li);
-//}
-
 
 
 //--------------------------------------------------Event Listeners
