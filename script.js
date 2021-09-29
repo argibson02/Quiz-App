@@ -147,11 +147,12 @@ function timerNumber() {
         timeCount.textContent = timeLeft;
         if (timeLeft <= 0) {
             timeScore = parseInt(timeLeft);
-            console.log(timeScore + " time score"); // delete me
+            //console.log(timeScore + " time score"); // delete me
             localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
             clearInterval(timeInterval);
             choiceSection.setAttribute("style", "display:none"); //swapping out the sections
             scoreboardSection.setAttribute("style", "display:inherit");
+            displayScores();
         }
     }, 1000);
 }
@@ -176,6 +177,20 @@ function playAgain() {
     runGame();
 }
 
+
+//----------------------------------------------------Function for displaying scores
+function displayScores() {
+    //var localCheck = localStorage.getItem(scoresArray);
+    //console.log(localCheck + " this is the local array");
+    var htmlText = "";
+    for (let i = 0; i < scoresArray.length; i++) {
+    htmlText += `<li class="scoreboardLi">${scoresArray[i]}</li>`
+    }
+    scoreboardUl.innerHTML = htmlText;
+}
+
+
+
 //----------------------------------------------------------Penalties
 function compareButtonChoice0() {
     if (parseInt(questionsObject[index].answer) !== 0) {
@@ -187,11 +202,12 @@ function compareButtonChoice0() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                console.log(timeScore + " time score"); // delete me
+                //console.log(timeScore + " time score"); // delete me
                 localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
+                displayScores();
             }
         },1000);
     }
@@ -206,11 +222,12 @@ function compareButtonChoice1() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                console.log(timeScore + " time score"); // delete me
+                ///console.log(timeScore + " time score"); // delete me
                 localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
+                displayScores();
             }
         },1000);
     }
@@ -225,11 +242,12 @@ function compareButtonChoice2() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                console.log(timeScore + " time score"); // delete me
+                //console.log(timeScore + " time score"); // delete me
                 localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
+                displayScores();
             }
         },1000);
     }
@@ -244,11 +262,12 @@ function compareButtonChoice3() {
         timeCount.textContent = timeLeft;
             if (timeLeft <= 0) {
                 timeScore = parseInt(timeLeft);
-                console.log(timeScore + " time score"); // delete me
+                //console.log(timeScore + " time score"); // delete me
                 localStorage.setItem("timeScore", timeLeft); // logging time score, currently doiesn't work
                 clearInterval(timeInterval);
                 choiceSection.setAttribute("style", "display:none"); //swapping out the sections
                 scoreboardSection.setAttribute("style", "display:inherit");
+                displayScores();
             }
         },1000);
     }
@@ -317,6 +336,7 @@ function saveInitials(event) {
 
     }
     storeScores();
+    displayScores();
 }
 
 // Function for clearing scoresArray #2 
@@ -325,18 +345,18 @@ function clearScores (event) {
     localStorage.setItem("scoresArray", ""); // clears local storage
     scoresArray = []; // clears javascript storage
     console.log(scoresArray); // delete me
-     
+    scoreboardUl.innerHTML = ""; 
 }
 
 
 
-function renderScores() {
-    for (let i = 0; i < scoresArray.length; i++);
-    var scoreboardLi = document.createElement("li");
-    scoreboardLi.textContent = scoresArray[i];
-    scoreboardLi.setAttribute("data-index", i);
-    scoreboardUl.appendChild(li);
-}
+//function displayScores() {
+//    for (let i = 0; i < scoresArray.length; i++);
+//    var scoreboardLi = document.createElement("li");
+//    scoreboardLi.textContent = scoresArray[i];
+//    scoreboardLi.setAttribute("data-index", i);
+//    scoreboardUl.appendChild(li);
+//}
 
 
 
@@ -373,72 +393,3 @@ choiceButton3.addEventListener("click", function(event) {
     event.stopPropagation();
     multipleChoice();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*---------Creating lines for scores--------------------------------------------------------------------------------------------------------------------*/
-/*
-function showScores() { //need to make sure to run this scoring function 
-    scoreboardUl.innerHTML = ""
-    for (let i =0; i < scoresArray.length; i++) {
-        var scoreSet = scoresArray[i];
-        var scoreboardLi = document.createElement("li");
-        scoreboardLi.textContent = scoreSet;
-        scoreboardLi.setAttribute("data-index", i);
-        scoreboardUl.appendChild(li);
-    }
-    
-}
-*/

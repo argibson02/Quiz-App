@@ -113,7 +113,7 @@ body {
 }
 
 #startSection {
-    display: none;
+    display: inherit;
 }
 
 /*------------QUESTION SECTION-----------------*/
@@ -225,7 +225,7 @@ body {
 }
 
 #scoreboardSection {
-    display: inherit;
+    display: none;
 }
 
 /*----------------RESPONSIVE BREAKPOINT SECTION-------------------*/
