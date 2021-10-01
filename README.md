@@ -11,7 +11,6 @@ Think you're a **cool cat**? Prove it by taking this **Garfield** knowledge quiz
 ![Demo of the quiz in action](https://github.com/argibson02/Quiz-App/blob/main/images/demo-garfield-quiz.gif?raw=true)
 ![Cool Garfield](https://github.com/argibson02/Quiz-App/blob/main/images/cool-garfield.gif?raw=true)
 
-*(Homework project #4 for the UC Berkeley Full-Stack Developer Bootcamp)*
 
 ## Prerequisites
 Any modern internet browser will do!
